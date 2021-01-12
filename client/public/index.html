@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>1st Multiplayer Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="canvas-container">
+        <div class="canvas-content">
+            <canvas id="screen" width="10" height="10"></canvas>
+        </div>
+    </div>
+
+    <script type="module">
+        import createKeyboardListener from './keyboard-listener.js'
+        import createGame from './game.js'
+        import renderScreen from './render-screen.js'
+
+        const game = createGame()
+        const keyboardListener = createKeyboardListener(document)
+        keyboardListener.subscribe(game.movePlayer)
+
+        const screen = document.getElementById('screen')
+        renderScreen(screen, game, requestAnimationFrame)
+
+        const socket = io()
+        
+        socket.on('connect', () => {
+            const playerId = socket.id
+            console.log(`player connected on client with id: ${playerId}`)
+        })
+    </script>
+</body>
+
+</html>

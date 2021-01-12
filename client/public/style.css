@@ -1,0 +1,23 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+#screen {
+    border: 1px gray solid;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    width: 400px;
+    height: 400px;
+   
+}
+
+.canvas-container {
+    text-align: center;
+}
+
+.canvas-content {
+   
+}
+
